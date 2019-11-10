@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body onload="local()">
+<button onclick="info()">发送消息</button>
+<p id="message">收到的消息为：</p>
+<script>
+    function info() {
+        $.ajax({
+            url:'http://localhost:8080/send',//地址
+            dataType:'json',//数据类型
+            type:'GET',//类型
+            timeout:2000,//超时
+            //请求成功
+            success:function(data,status){
+                //alert(data);
+                //alert(status);
+                console.log(data+","+status)
+            },
+            //失败/超时
+            error:function(XMLHttpRequest,textStatus,errorThrown){
+                if(textStatus==='timeout'){
+                    alert('請求超時');
+                    setTimeout(function(){
+                        alert('重新请求');
+                    },2000);
+                }
+                //alert(errorThrown);
+            }
+        })
+    }
+
+    function local() {
+        var socket;
+        if(typeof(WebSocket) == "undefined") {
+            console.log("您的浏览器不支持WebSocket");
+        }else{
+            console.log("您的浏览器支持WebSocket");
+
+            //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
+            //socket = new WebSocket("ws://localhost:9094/starManager/websocket/张三")
+            socket = new WebSocket("ws://localhost:8080/index");
+            //打开事件
+            socket.onopen = function() {
+                console.log("Socket 已打开");
+                //info()
+                //socket.send("这是来自客户端的消息" + location.href + new Date());
+            };
+            //获得消息事件
+            socket.onmessage = function(msg) {
+                console.log("接收到的消息为"+msg.data);
+                //发现消息进入    调后台获取
+
+            };
+            //关闭事件
+            socket.onclose = function() {
+                console.log("Socket已关闭");
+            };
+            //发生了错误事件
+            socket.onerror = function() {
+                alert("Socket发生了错误");
+            }
+            window.onunload = function (ev) {
+                socket.close()
+            }
+        }
+    }
+</script>
+</body>
+</html>
