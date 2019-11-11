@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Starter</title>
+  <title>快推</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -18,7 +18,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="local()">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -129,7 +129,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">李博武</span>
@@ -166,7 +166,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 text-dark">消息推送</h1>
-          </div><!-- /.col -->
+          </div>
+
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#" id="onlineNum">在线人数：0</a></li>
+            </ol>
+          </div>
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -185,6 +192,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                   <label for="exampleInputContent" style="margin-top: 30px">标题</label>
                   <input type="email" class="form-control" id="exampleInputContent" placeholder="请输入推送内容" style="margin-bottom: 30px">
+
+                  <label for="exampleInputContent">图片</label>
+                  <input type="email" class="form-control" id="exampleInputImageUrl" placeholder="请输入图片链接" style="margin-bottom: 30px">
 
                   <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="sendMessage()">开始推送</button>
                 </div>
@@ -227,9 +237,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   function sendMessage() {
     var title = document.getElementById("exampleInputTitle").value
     var content = document.getElementById("exampleInputContent").value
+    var imageUrl = document.getElementById("exampleInputImageUrl").value
     var message = {
       "title":title,
-      "content":content
+      "content":content,
+      "imageUrl":imageUrl
     }
     console.log("文本内容为："+title+","+content)
     $.ajax({
@@ -262,6 +274,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
         //alert(errorThrown);
       }
     })
+  }
+
+  function local() {
+    var socket;
+    if(typeof(WebSocket) == "undefined") {
+      console.log("您的浏览器不支持WebSocket");
+    }else{
+      console.log("您的浏览器支持WebSocket");
+
+      //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
+      //socket = new WebSocket("ws://localhost:9094/starManager/websocket/张三")
+      socket = new WebSocket("ws://localhost:8080/admin");
+      //打开事件
+      socket.onopen = function() {
+        console.log("Socket 已打开");
+        //info()
+        //socket.send("这是来自客户端的消息" + location.href + new Date());
+      };
+      //获得消息事件
+      socket.onmessage = function(msg) {
+        console.log("接收到的消息为"+msg.data);
+        document.getElementById("onlineNum").innerText = msg.data
+      };
+      //关闭事件
+      socket.onclose = function() {
+        console.log("Socket已关闭");
+      };
+      //发生了错误事件
+      socket.onerror = function() {
+        alert("Socket发生了错误");
+      }
+      window.onunload = function (ev) {
+        socket.close()
+      }
+    }
   }
 </script>
 <!-- jQuery -->
