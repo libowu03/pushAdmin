@@ -1,10 +1,14 @@
 package com.push.push.utils;
 
+import com.google.gson.Gson;
+import com.push.push.bean.MessageBean;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import javax.websocket.Session;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public class WebSocketUtils {
@@ -12,10 +16,6 @@ public class WebSocketUtils {
      * 静态变量，用来记录当前在线连接数。即返回前台的人数。
      */
     private static Long onlineCount = 0L;
-    /**
-     * 用来存放普通用户ID。
-     */
-    private static CopyOnWriteArraySet<String> userIdSet = new CopyOnWriteArraySet<>();
     /**
      * 用来存放普通用户Session和id。
      */
@@ -87,21 +87,113 @@ public class WebSocketUtils {
         });
     }
 
-
     /**
-     * 发送消息给用户
-     * @param msg
+     * 发送消息给管理员
      */
-
-    public static void sendMessageToUser(String msg){
-        usersSessionEntitySet.forEach(webSocketSession -> {
+    public static void sendMessageToAdmin(String msg){
+        adminSessionEntitySet.forEach(webSocketSession -> {
             try {
                 webSocketSession.sendMessage(new TextMessage(msg));
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("发送消息给用户失败："+e.getLocalizedMessage());
+                System.out.println("发送消息给管理员失败："+e.getLocalizedMessage());
             }
         });
     }
 
+
+    /**
+     * 发送消息给所有用户
+     * @param msg
+     */
+
+    public static void sendMessageToUser(String msg){
+        usersSessionEntitySet.forEach(usersSessionEntitySet->{
+            try {
+                usersSessionEntitySet.sendMessage(new TextMessage(msg));
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("消息发送失败");
+            }
+        });
+    }
+
+    /**
+     * 发送给某个用户
+     */
+
+    public static void sendMessageToUserForSingle(String msg){
+        Gson gson = new Gson();
+        MessageBean messageBean = gson.fromJson(msg,MessageBean.class);
+        usersSessionEntitySet.forEach(webSocketSession -> {
+            String[] path = webSocketSession.getUri().getQuery().split("&");
+            HashMap<String,String> map = new HashMap<>();
+            for (int i=0;i<path.length;i++){
+                String[] para= path[i].split("=");
+                map.put(para[0],para[1]);
+            }
+            if (map.get("id").equals(messageBean.getTargetId())){
+                try {
+                    webSocketSession.sendMessage(new TextMessage(msg));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("发送消息给用户失败："+e.getLocalizedMessage());
+                }
+            }
+
+        });
+    }
+
+    /**
+     * 发送给某个渠道
+     */
+
+    public static void sendMessageToUserForChannel(String msg){
+        Gson gson = new Gson();
+        MessageBean messageBean = gson.fromJson(msg,MessageBean.class);
+        usersSessionEntitySet.forEach(webSocketSession -> {
+            String[] path = webSocketSession.getUri().getQuery().split("&");
+            HashMap<String,String> map = new HashMap<>();
+            for (int i=0;i<path.length;i++){
+                String[] para= path[i].split("=");
+                map.put(para[0],para[1]);
+            }
+            if (Integer.valueOf(map.get("channel")) == messageBean.getChannel()){
+                try {
+                    webSocketSession.sendMessage(new TextMessage(msg));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("发送消息给用户失败："+e.getLocalizedMessage());
+                }
+            }
+
+        });
+    }
+
+
+    /**
+     * 通过条件发送信息
+     */
+
+    public static void sendMessageToUserForCondition(String msg){
+        Gson gson = new Gson();
+        MessageBean messageBean = gson.fromJson(msg,MessageBean.class);
+        usersSessionEntitySet.forEach(webSocketSession -> {
+            String[] path = webSocketSession.getUri().getQuery().split("&");
+            HashMap<String,String> map = new HashMap<>();
+            for (int i=0;i<path.length;i++){
+                String[] para= path[i].split("=");
+                map.put(para[0],para[1]);
+            }
+            if (Integer.valueOf(map.get("channel")) == messageBean.getChannel() && Integer.valueOf(map.get("age"))>messageBean.getMinYear() && Integer.valueOf(map.get("age"))<messageBean.getMaxYear()){
+                try {
+                    webSocketSession.sendMessage(new TextMessage(msg));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("发送消息给用户失败："+e.getLocalizedMessage());
+                }
+            }
+
+        });
+    }
 }

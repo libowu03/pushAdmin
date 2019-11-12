@@ -5,311 +5,634 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>快推</title>
+    <title>快推</title>
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini" onload="local()">
 <div class="wrapper">
 
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
-
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-            class="fas fa-th-large"></i></a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">李博武</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                推送消息
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+            </li>
         </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">消息推送</h1>
-          </div>
 
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#" id="onlineNum">在线人数：0</a></li>
-            </ol>
-          </div>
-
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="exampleInputTitle">标题</label>
-                  <input type="email" class="form-control" id="exampleInputTitle" placeholder="请输入推送标题">
-
-                  <label for="exampleInputContent" style="margin-top: 30px">标题</label>
-                  <input type="email" class="form-control" id="exampleInputContent" placeholder="请输入推送内容" style="margin-bottom: 30px">
-
-                  <label for="exampleInputContent">图片</label>
-                  <input type="email" class="form-control" id="exampleInputImageUrl" placeholder="请输入图片链接" style="margin-bottom: 30px">
-
-                  <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="sendMessage()">开始推送</button>
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Messages Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge">3</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Brad Diesel
+                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">Call me whenever you can...</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    John Pierce
+                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">I got your message bro</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Nora Silvester
+                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">The subject goes here</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                 </div>
-              </div>
-            </div>
-          </div>
+            </li>
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge">15</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-header">15 Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                        <span class="float-right text-muted text-sm">3 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-users mr-2"></i> 8 friend requests
+                        <span class="float-right text-muted text-sm">12 hours</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-file mr-2"></i> 3 new reports
+                        <span class="float-right text-muted text-sm">2 days</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+                        class="fas fa-th-large"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="#" class="brand-link">
+            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light">李博武</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                推送消息
+                                <span class="right badge badge-danger">New</span>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+        <!-- /.sidebar -->
+    </aside>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- /.content-header -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      Anything you want
+        <!-- Main content -->
+        <div class="content">
+            <div class="card">
+                <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">群推</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">个推</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">渠推</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#other" data-toggle="tab">条件推送</a></li>
+                    </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="activity">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row"  style="margin-bottom: 50px">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" style="margin-bottom: 30px">
+                                                            <label for="exampleInputTitle">标题</label>
+                                                            <input type="email" class="form-control" id="exampleInputTitle" placeholder="请输入推送标题">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="exampleInputContent">标题</label>
+                                                            <input type="email" class="form-control" id="exampleInputContent" placeholder="请输入推送内容">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" style="margin-bottom: 30px">
+                                                            <label for="exampleInputContent">图片</label>
+                                                            <input type="email" class="form-control" id="exampleInputImageUrl" placeholder="请输入图片链接">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>推送类型</label>
+                                                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%" data-select2-id="9" tabindex="-1" aria-hidden="true" id="typeOne">
+                                                                <option selected="selected" data-select2-id="11" value="0">通知栏</option>
+                                                                <option data-select2-id="29" value="1">启动弹窗</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="sendMessageOne()">开始推送</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div><!-- /.container-fluid -->
+                        </div>
+                        <!-- /.tab-pane -->
+                        <div class="tab-pane" id="timeline">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="exampleInputTitle">标题</label>
+                                                    <input type="email" class="form-control" id="exampleInputTitle2" placeholder="请输入推送标题">
+
+                                                    <label for="exampleInputContent" style="margin-top: 30px">标题</label>
+                                                    <input type="email" class="form-control" id="exampleInputContent2" placeholder="请输入推送内容" style="margin-bottom: 30px">
+
+                                                    <label for="exampleInputContent">图片</label>
+                                                    <input type="email" class="form-control" id="exampleInputImageUrl2" placeholder="请输入图片链接" style="margin-bottom: 30px">
+
+                                                    <label for="exampleInputContent">目标id</label>
+                                                    <input type="email" class="form-control" id="exampleInputTargetId" placeholder="请输入目标ID" style="margin-bottom: 30px">
+
+                                                    <div class="form-group">
+                                                        <label>推送类型</label>
+                                                        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true" id="typeTwo">
+                                                            <option selected="selected" data-select2-id="11" value="0">通知栏</option>
+                                                            <option data-select2-id="29" value="1">启动弹窗</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="sendMessageTwo()">开始推送</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div><!-- /.container-fluid -->
+                        </div>
+                        <!-- /.tab-pane -->
+
+                        <div class="tab-pane" id="settings">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="exampleInputTitle">标题</label>
+                                                    <input type="email" class="form-control" id="exampleInputTitle3" placeholder="请输入推送标题">
+
+                                                    <label for="exampleInputContent" style="margin-top: 30px">标题</label>
+                                                    <input type="email" class="form-control" id="exampleInputContent3" placeholder="请输入推送内容" style="margin-bottom: 30px">
+
+                                                    <label for="exampleInputContent">图片</label>
+                                                    <input type="email" class="form-control" id="exampleInputImageUrl3" placeholder="请输入图片链接" style="margin-bottom: 30px">
+
+                                                    <div class="form-group row">
+                                                        <div class="form-group col-lg-6">
+                                                            <label>渠道选择</label>
+                                                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true" id="channel">
+                                                                <option selected="selected" data-select2-id="11" value="0">华为</option>
+                                                                <option disabled="disabled" data-select2-id="30" value="1">小米</option>
+                                                                <option data-select2-id="31" value="2">OPPO</option>
+                                                                <option data-select2-id="32" value="3">VIVO</option>
+                                                                <option data-select2-id="33" value="4">QQ</option>
+                                                                <option data-select2-id="34" value="5">360</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group col-lg-6">
+                                                            <label>推送类型</label>
+                                                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true" id="typeThree">
+                                                                <option selected="selected" data-select2-id="11" value="0">通知栏</option>
+                                                                <option data-select2-id="29" value="1">启动弹窗</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="sendMessageThree()">开始推送</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div><!-- /.container-fluid -->
+                        </div>
+
+                        <div class="tab-pane" id="other">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="exampleInputTitle">标题</label>
+                                                    <input type="email" class="form-control" id="exampleInputTitle4" placeholder="请输入推送标题">
+
+                                                    <label for="exampleInputContent" style="margin-top: 30px">标题</label>
+                                                    <input type="email" class="form-control" id="exampleInputContent4" placeholder="请输入推送内容" style="margin-bottom: 30px">
+
+                                                    <label for="exampleInputContent">图片</label>
+                                                    <input type="email" class="form-control" id="exampleInputImageUrl4" placeholder="请输入图片链接" style="margin-bottom: 30px">
+
+                                                    <div class="form-group row">
+                                                        <div class="form-group col-lg-4">
+                                                            <label>渠道选择</label>
+                                                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true" id="channelTwo">
+                                                                <option selected="selected" data-select2-id="11" value="0">华为</option>
+                                                                <option disabled="disabled" data-select2-id="30" value="1">小米</option>
+                                                                <option data-select2-id="31" value="2">OPPO</option>
+                                                                <option data-select2-id="32" value="3">VIVO</option>
+                                                                <option data-select2-id="33" value="4">QQ</option>
+                                                                <option data-select2-id="34" value="4">360</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            <label>年龄区间</label>
+                                                            <div class="form-group row">
+                                                                <input type="number" class="form-control col-lg-6" id="minYear" placeholder="最小年龄" min="0">
+                                                                <input type="number" class="form-control col-lg-6" id="maxYear" placeholder="最大年龄" max="100">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-lg-4">
+                                                            <label>推送类型</label>
+                                                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true" id="typeFour">
+                                                                <option selected="selected" data-select2-id="11" value="0">通知栏</option>
+                                                                <option data-select2-id="29" value="1">启动弹窗</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary4 btn-lg col-lg-3" onclick="sendMessageFour()">开始推送</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div><!-- /.container-fluid -->
+                        </div>
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+            </div>
+        </div>
+        <!-- /.content -->
     </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer>
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 
 <script>
-  function sendMessage() {
-    var title = document.getElementById("exampleInputTitle").value
-    var content = document.getElementById("exampleInputContent").value
-    var imageUrl = document.getElementById("exampleInputImageUrl").value
-    var message = {
-      "title":title,
-      "content":content,
-      "imageUrl":imageUrl
-    }
-    console.log("文本内容为："+title+","+content)
-    $.ajax({
-      //url:'http://localhost:8080/send',//地址
-      url:'/send',//地址
-      dataType:'json',//数据类型
-      type:'POST',//类型
-     /* headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-      },*/
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8'
-      },
-      timeout:2000,//超时
-      data:JSON.stringify(message),
-      //请求成功
-      success:function(data,status){
-        //alert(data);
-        //alert(status);
-        console.log(data+","+status)
-      },
-      //失败/超时
-      error:function(XMLHttpRequest,textStatus,errorThrown){
-        if(textStatus==='timeout'){
-          alert('請求超時');
-          setTimeout(function(){
-            alert('重新请求');
-          },2000);
+    function sendMessageOne() {
+        var title = document.getElementById("exampleInputTitle").value
+        var content = document.getElementById("exampleInputContent").value
+        var imageUrl = document.getElementById("exampleInputImageUrl").value
+        var type = document.getElementById("typeOne")
+        var index = type.selectedIndex
+        var value = type.options[index].value
+        console.log("获取的value为："+value)
+        var message = {
+            "title": title,
+            "content": content,
+            "imageUrl": imageUrl,
+            "type":value,
+            "channel":-1
         }
-        //alert(errorThrown);
-      }
-    })
-  }
-
-  function local() {
-    var socket;
-    if(typeof(WebSocket) == "undefined") {
-      console.log("您的浏览器不支持WebSocket");
-    }else{
-      console.log("您的浏览器支持WebSocket");
-
-      //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
-      //socket = new WebSocket("ws://localhost:9094/starManager/websocket/张三")
-      socket = new WebSocket("ws://localhost:8080/admin");
-      //打开事件
-      socket.onopen = function() {
-        console.log("Socket 已打开");
-        //info()
-        //socket.send("这是来自客户端的消息" + location.href + new Date());
-      };
-      //获得消息事件
-      socket.onmessage = function(msg) {
-        console.log("接收到的消息为"+msg.data);
-        document.getElementById("onlineNum").innerText = msg.data
-      };
-      //关闭事件
-      socket.onclose = function() {
-        console.log("Socket已关闭");
-      };
-      //发生了错误事件
-      socket.onerror = function() {
-        alert("Socket发生了错误");
-      }
-      window.onunload = function (ev) {
-        socket.close()
-      }
+        console.log("文本内容为：" + title + "," + content)
+        $.ajax({
+            //url:'http://localhost:8080/send',//地址
+            url: '/sendAll',//地址
+            dataType: 'json',//数据类型
+            type: 'POST',//类型
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            timeout: 2000,//超时
+            data: JSON.stringify(message),
+            //请求成功
+            success: function (data, status) {
+                //alert(data);
+                //alert(status);
+                console.log(data + "," + status)
+            },
+            //失败/超时
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (textStatus === 'timeout') {
+                    alert('請求超時');
+                    setTimeout(function () {
+                        alert('重新请求');
+                    }, 2000);
+                }
+                //alert(errorThrown);
+            }
+        })
     }
-  }
+
+    function sendMessageTwo() {
+        var title = document.getElementById("exampleInputTitle2").value
+        var content = document.getElementById("exampleInputContent2").value
+        var imageUrl = document.getElementById("exampleInputImageUrl2").value
+        var type = document.getElementById("typeTwo")
+        var index = type.selectedIndex
+        var targetId = document.getElementById("exampleInputTargetId").value
+        var value = type.options[index].value
+        console.log("获取的value为："+value)
+        var message = {
+            "title": title,
+            "content": content,
+            "imageUrl": imageUrl,
+            "type":value,
+            "channel":-1,
+            "targetId":targetId
+        }
+        console.log("文本内容为：" + title + "," + content)
+        $.ajax({
+            //url:'http://localhost:8080/send',//地址
+            url: '/sendSingle',//地址
+            dataType: 'json',//数据类型
+            type: 'POST',//类型
+            /* headers: {
+               'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+             },*/
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            timeout: 2000,//超时
+            data: JSON.stringify(message),
+            //请求成功
+            success: function (data, status) {
+                //alert(data);
+                //alert(status);
+                console.log(data + "," + status)
+            },
+            //失败/超时
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (textStatus === 'timeout') {
+                    alert('請求超時');
+                    setTimeout(function () {
+                        alert('重新请求');
+                    }, 2000);
+                }
+                //alert(errorThrown);
+            }
+        })
+    }
+
+
+    function sendMessageThree() {
+        var title = document.getElementById("exampleInputTitle3").value
+        var content = document.getElementById("exampleInputContent3").value
+        var imageUrl = document.getElementById("exampleInputImageUrl3").value
+        var type = document.getElementById("typeThree")
+        var index = type.selectedIndex
+        var value = type.options[index].value
+
+
+        var channel = document.getElementById("channel")
+        var channelIndex = channel.selectedIndex
+        var channelValue = channel.options[channelIndex].value
+
+        console.log("获取的value为："+value)
+        var message = {
+            "title": title,
+            "content": content,
+            "imageUrl": imageUrl,
+            "type":value,
+            "channel":channelValue
+        }
+        console.log("文本内容为：" + title + "," + content)
+        $.ajax({
+            url: '/sendByChannel',//地址
+            dataType: 'json',//数据类型
+            type: 'POST',//类型
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            timeout: 2000,//超时
+            data: JSON.stringify(message),
+            //请求成功
+            success: function (data, status) {
+                //alert(data);
+                //alert(status);
+                console.log(data + "," + status)
+            },
+            //失败/超时
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (textStatus === 'timeout') {
+                    alert('請求超時');
+                    setTimeout(function () {
+                        alert('重新请求');
+                    }, 2000);
+                }
+                //alert(errorThrown);
+            }
+        })
+    }
+
+    function sendMessageFour() {
+        var title = document.getElementById("exampleInputTitle4").value
+        var content = document.getElementById("exampleInputContent4").value
+        var imageUrl = document.getElementById("exampleInputImageUrl4").value
+        var type = document.getElementById("typeFour")
+        var minYear = document.getElementById("minYear").value
+        var maxYear = document.getElementById("maxYear").value
+        var index = type.selectedIndex
+        var value = type.options[index].value
+
+        var channel = document.getElementById("channelTwo")
+        var channelIndex = channel.selectedIndex
+        var channelValue = channel.options[channelIndex].value
+
+        console.log("获取的value为："+value)
+        var message = {
+            "title": title,
+            "content": content,
+            "imageUrl": imageUrl,
+            "type":value,
+            "minYear":minYear,
+            "maxYear":maxYear,
+            "channel":channelValue
+        }
+        console.log("文本内容为：" + title + "," + content)
+        $.ajax({
+            //url:'http://localhost:8080/send',//地址
+            url: '/sendByCondition',//地址
+            dataType: 'json',//数据类型
+            type: 'POST',//类型
+            /* headers: {
+               'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+             },*/
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            timeout: 2000,//超时
+            data: JSON.stringify(message),
+            //请求成功
+            success: function (data, status) {
+                //alert(data);
+                //alert(status);
+                console.log(data + "," + status)
+            },
+            //失败/超时
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (textStatus === 'timeout') {
+                    alert('請求超時');
+                    setTimeout(function () {
+                        alert('重新请求');
+                    }, 2000);
+                }
+                //alert(errorThrown);
+            }
+        })
+    }
+
+
+    function local() {
+        var socket;
+        if (typeof (WebSocket) == "undefined") {
+            console.log("您的浏览器不支持WebSocket");
+        } else {
+            console.log("您的浏览器支持WebSocket");
+
+            //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
+            //socket = new WebSocket("ws://localhost:9094/starManager/websocket/张三")
+            socket = new WebSocket("ws://localhost:8080/admin");
+            //打开事件
+            socket.onopen = function () {
+                console.log("Socket 已打开");
+                //info()
+                //socket.send("这是来自客户端的消息" + location.href + new Date());
+            };
+            //获得消息事件
+            socket.onmessage = function (msg) {
+                console.log("接收到的消息为" + msg.data);
+                document.getElementById("onlineNum").innerText = msg.data
+            };
+            //关闭事件
+            socket.onclose = function () {
+                console.log("Socket已关闭");
+            };
+            //发生了错误事件
+            socket.onerror = function () {
+                alert("Socket发生了错误");
+            }
+            window.onunload = function (ev) {
+                socket.close()
+            }
+        }
+    }
 </script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>

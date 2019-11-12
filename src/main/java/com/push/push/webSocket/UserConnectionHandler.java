@@ -1,16 +1,16 @@
 package com.push.push.webSocket;
 
+import com.google.gson.Gson;
 import com.push.push.utils.WebSocketUtils;
 import org.springframework.web.socket.*;
 
-import javax.websocket.Session;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 public class UserConnectionHandler implements WebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        System.out.println("用户连接成功");
+        String para = session.getUri().getQuery();
+
         WebSocketUtils.addUser(session);
         //小管理员汇报当前在线人数
         WebSocketUtils.sendMessageToAdmin();
