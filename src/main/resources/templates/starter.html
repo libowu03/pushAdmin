@@ -17,6 +17,82 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <style>
+        .chooseOption{
+            z-index: 9999;
+        }
+        .cover{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: rgba(0,0,1,0.5);
+            left: 0;
+            top: 0;
+            z-index: 999;
+            text-align: center;
+            align-content: center;
+            vertical-align: center;
+            display: -webkit-box;
+            -webkit-box-orient: horizontal;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            display: -moz-box;
+            -moz-box-orient: horizontal;
+            -moz-box-pack: center;
+            -moz-box-align: center;
+            -o-box-orient: horizontal;
+            -o-box-pack: center;
+            -o-box-align: center;
+            -ms-box-orient: horizontal;
+            -ms-box-pack: center;
+            -ms-box-align: center;
+            box-orient: horizontal;
+            box-pack: center;
+            box-align: center;
+
+        }
+        .condicationBtn{
+            height: 30px;
+            background: #FCFCFC;
+            margin: 10px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 30px;
+            color: #333333;
+        }
+        .condicationBtn:hover{
+            background:#343A40;
+            color: #fafafa;
+            cursor: pointer;
+        }
+        .chooseBtnGroup{
+            height: 30px;
+            background: #F1F3F4;
+            margin: 10px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 30px;
+            color: #333333;
+        }
+        .chooseBtnGroup:hover{
+            background: #7F7F7F;
+            color: #ffffff;
+        }
+        .addBtn{
+            height: 30px;
+            background: #F1F3F4;
+            margin: 10px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 30px;
+            color: #333333;
+        }
+        .addBtn:hover{
+            background: #7F7F7F;
+            color: #ffffff;
+        }
+
+    </style>
 </head>
 <body class="hold-transition sidebar-mini" onload="local()">
 <div class="wrapper">
@@ -132,7 +208,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="#" class="brand-link">
             <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">李博武</span>
+            <span class="brand-text font-weight-light">DQQ</span>
         </a>
 
         <!-- Sidebar -->
@@ -148,10 +224,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 推送消息
-                                <span class="right badge badge-danger">New</span>
                             </p>
                         </a>
                     </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -166,13 +242,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main content -->
         <div class="content">
             <div class="card">
-                <div class="card-header p-2">
-                    <ul class="nav nav-pills">
+                <div class="card-header p-2 row">
+                    <ul class="nav nav-pills col-sm-6">
                         <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">群推</a></li>
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">个推</a></li>
                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">渠推</a></li>
                         <li class="nav-item"><a class="nav-link" href="#other" data-toggle="tab">条件推送</a></li>
                     </ul>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right" style="background: #FFFFFF">
+                            <li class="breadcrumb-item" style="background: #FFFFFF"><a href="#" id="onlineNum">在线人数：0</a></li>
+                        </ol>
+                    </div>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <div class="tab-content">
@@ -322,33 +403,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <label for="exampleInputContent">图片</label>
                                                     <input type="email" class="form-control" id="exampleInputImageUrl4" placeholder="请输入图片链接" style="margin-bottom: 30px">
 
-                                                    <div class="form-group row">
-                                                        <div class="form-group col-lg-4">
-                                                            <label>渠道选择</label>
-                                                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true" id="channelTwo">
-                                                                <option selected="selected" data-select2-id="11" value="0">华为</option>
-                                                                <option disabled="disabled" data-select2-id="30" value="1">小米</option>
-                                                                <option data-select2-id="31" value="2">OPPO</option>
-                                                                <option data-select2-id="32" value="3">VIVO</option>
-                                                                <option data-select2-id="33" value="4">QQ</option>
-                                                                <option data-select2-id="34" value="4">360</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-lg-4">
-                                                            <label>年龄区间</label>
-                                                            <div class="form-group row">
-                                                                <input type="number" class="form-control col-lg-6" id="minYear" placeholder="最小年龄" min="0">
-                                                                <input type="number" class="form-control col-lg-6" id="maxYear" placeholder="最大年龄" max="100">
-                                                            </div>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label>推送类型</label>
+                                                        <select class="form-control select2 select2-hidden-accessible" style="width: 100%" data-select2-id="9" tabindex="-1" aria-hidden="true" id="typeFour">
+                                                            <option selected="selected" data-select2-id="11" value="0">通知栏</option>
+                                                            <option data-select2-id="29" value="1">启动弹窗</option>
+                                                        </select>
+                                                    </div>
 
-                                                        <div class="form-group col-lg-4">
-                                                            <label>推送类型</label>
-                                                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="9" tabindex="-1" aria-hidden="true" id="typeFour">
-                                                                <option selected="selected" data-select2-id="11" value="0">通知栏</option>
-                                                                <option data-select2-id="29" value="1">启动弹窗</option>
-                                                            </select>
-                                                        </div>
+                                                    <div class="form-group selectGroup row" id="selectGroup">
+                                                        <span class="addBtn col-sm-2" onclick="addCondication()">添加</span>
                                                     </div>
 
                                                     <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary4 btn-lg col-lg-3" onclick="sendMessageFour()">开始推送</button>
@@ -364,6 +428,79 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                     <!-- /.tab-content -->
                 </div><!-- /.card-body -->
+            </div>
+            <div class="cover" hidden id="coverOne" onclick="hideCover(this)">
+                <div class="chooseOption col-lg-6 col-centered" id="chooseOption" style="background:#cccccc;height: auto;padding: 30px;border-radius: 15px;margin: 0 auto;">
+                    <div class="btnGroup row" style="margin-bottom: 30px">
+                        <span class="col-sm-2 condicationBtn" onclick="clickChoose(this)">版本</span>
+                        <span class="col-sm-2 condicationBtn" onclick="clickChoose(this)">渠道</span>
+                        <span class="col-sm-2 condicationBtn" onclick="clickChoose(this)">国家地区</span>
+                        <span class="col-sm-2 condicationBtn" onclick="clickChoose(this)">语言</span>
+                        <span class="col-sm-2 condicationBtn" onclick="clickChoose(this)">VIP</span>
+                        <span class="col-sm-2 condicationBtn" onclick="clickChoose(this)">年龄</span>
+                    </div>
+                </div>
+                <div class="col-lg-6 chooseOption" id="versionChoose" style="margin: 0 auto;display: none">
+                    <select class="form-control select2 select2-hidden-accessible" data-info="版本" data-name="version" style="width: 100%;margin-bottom: 30px" data-select2-id="9" tabindex="-1" aria-hidden="true" id="selectZero">
+                        <option selected="selected" data-select2-id="11" value="0">全版本</option>
+                        <option data-select2-id="29" value="1">1.0</option>
+                        <option data-select2-id="29" value="1">2.0</option>
+                        <option data-select2-id="29" value="1">3.0</option>
+                        <option data-select2-id="29" value="1">4.0</option>
+                        <option data-select2-id="29" value="1">5.0</option>
+                    </select>
+                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="confirmChoose(this)">确定</button>
+                </div>
+                <div class="col-lg-6 chooseOption" id="channelChoose" style="margin: 0 auto;display: none">
+                    <select class="form-control select2 select2-hidden-accessible" data-info="渠道" data-name = "channel" style="width: 100%;margin-bottom: 30px" data-select2-id="9" tabindex="-1" aria-hidden="true" id="selectFive">
+                        <option selected="selected" data-select2-id="11" value="0">全渠道</option>
+                        <option data-select2-id="29" value="1">华为</option>
+                        <option data-select2-id="29" value="1">小米</option>
+                        <option data-select2-id="29" value="1">oppo</option>
+                        <option data-select2-id="29" value="1">vivo</option>
+                        <option data-select2-id="29" value="1">QQ</option>
+                        <option data-select2-id="29" value="1">360</option>
+                    </select>
+                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="confirmChoose(this)">确定</button>
+                </div>
+                <div class="col-lg-6 chooseOption" id="positionChoose" style="margin: 0 auto;display: none">
+                    <select class="form-control select2 select2-hidden-accessible" data-info="地区" data-name = "area" style="width: 100%;margin-bottom: 30px" data-select2-id="9" tabindex="-1" aria-hidden="true" id="selectOne">
+                        <option selected="selected" data-select2-id="11" value="0">全地区</option>
+                        <option data-select2-id="29" value="1">广州</option>
+                        <option data-select2-id="29" value="1">深圳</option>
+                        <option data-select2-id="29" value="1">北京</option>
+                        <option data-select2-id="29" value="1">上海</option>
+                        <option data-select2-id="29" value="1">重庆</option>
+                    </select>
+                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="confirmChoose(this)">确定</button>
+                </div>
+                <div class="col-lg-6 chooseOption" id="languageChoose" style="margin: 0 auto;display: none">
+                    <select class="form-control select2 select2-hidden-accessible" data-info="语言" data-name="language" style="width: 100%;margin-bottom: 30px" data-select2-id="9" tabindex="-1" aria-hidden="true" id="selectTwo">
+                        <option selected="selected" data-select2-id="11" value="0">全语言</option>
+                        <option data-select2-id="29" value="1">简中</option>
+                        <option data-select2-id="29" value="1">繁中</option>
+                        <option data-select2-id="29" value="1">英语</option>
+                        <option data-select2-id="29" value="1">日语</option>
+                        <option data-select2-id="29" value="1">俄语</option>
+                    </select>
+                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="confirmChoose(this)">确定</button>
+                </div>
+                <div class="col-lg-6 chooseOption" id="vipChoose" style="margin: 0 auto;display: none">
+                    <select class="form-control select2 select2-hidden-accessible" data-info="用户类型" data-name="userType" style="width: 100%;margin-bottom: 30px" data-select2-id="9" tabindex="-1" aria-hidden="true" id="selectThree">
+                        <option selected="selected" data-select2-id="11" value="0">全类型</option>
+                        <option data-select2-id="29" value="1">VIP</option>
+                        <option data-select2-id="29" value="1">非VIP</option>
+                    </select>
+                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="confirmChoose(this)">确定</button>
+                </div>
+                <div class="form-group col-lg-6 chooseOption" style="display: none;margin: 0 auto;" id="ageChoose" data-info="年龄" data-name="age">
+                    <label>年龄区间</label>
+                    <div class="form-group row" style="margin-bottom: 30px">
+                        <input type="number" class="form-control col-lg-5" id="minYear" oninput="changeAgeValue(this)" placeholder="最小年龄" style="margin: 3px" min="0">
+                        <input type="number" class="form-control col-lg-5" id="maxYear" oninput="changeAgeValue(this)" placeholder="最大年龄" style="margin: 3px" max="100">
+                    </div>
+                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="confirmChoose(this)">确定</button>
+                </div>
             </div>
         </div>
         <!-- /.content -->
@@ -395,6 +532,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <script>
+    /**
+     *群推
+     */
     function sendMessageOne() {
         var title = document.getElementById("exampleInputTitle").value
         var content = document.getElementById("exampleInputContent").value
@@ -402,7 +542,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         var type = document.getElementById("typeOne")
         var index = type.selectedIndex
         var value = type.options[index].value
-        console.log("获取的value为："+value)
         var message = {
             "title": title,
             "content": content,
@@ -410,7 +549,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             "type":value,
             "channel":-1
         }
-        console.log("文本内容为：" + title + "," + content)
         $.ajax({
             //url:'http://localhost:8080/send',//地址
             url: '/sendAll',//地址
@@ -423,8 +561,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             data: JSON.stringify(message),
             //请求成功
             success: function (data, status) {
-                //alert(data);
-                //alert(status);
                 console.log(data + "," + status)
             },
             //失败/超时
@@ -439,6 +575,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }
         })
     }
+
+    /**
+     *
+     * 个推
+     */
 
     function sendMessageTwo() {
         var title = document.getElementById("exampleInputTitle2").value
@@ -491,6 +632,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     }
 
 
+    /**
+     * 渠道推送
+     */
     function sendMessageThree() {
         var title = document.getElementById("exampleInputTitle3").value
         var content = document.getElementById("exampleInputContent3").value
@@ -498,13 +642,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         var type = document.getElementById("typeThree")
         var index = type.selectedIndex
         var value = type.options[index].value
-
-
         var channel = document.getElementById("channel")
         var channelIndex = channel.selectedIndex
         var channelValue = channel.options[channelIndex].value
-
-        console.log("获取的value为："+value)
         var message = {
             "title": title,
             "content": content,
@@ -541,33 +681,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
         })
     }
 
+    /**
+     * 条件推送
+     */
+
     function sendMessageFour() {
         var title = document.getElementById("exampleInputTitle4").value
         var content = document.getElementById("exampleInputContent4").value
         var imageUrl = document.getElementById("exampleInputImageUrl4").value
+        //获取通知类型
         var type = document.getElementById("typeFour")
-        var minYear = document.getElementById("minYear").value
-        var maxYear = document.getElementById("maxYear").value
         var index = type.selectedIndex
         var value = type.options[index].value
 
-        var channel = document.getElementById("channelTwo")
-        var channelIndex = channel.selectedIndex
-        var channelValue = channel.options[channelIndex].value
-
-        console.log("获取的value为："+value)
+        //构造对象，添加固定属性
         var message = {
             "title": title,
             "content": content,
             "imageUrl": imageUrl,
-            "type":value,
-            "minYear":minYear,
-            "maxYear":maxYear,
-            "channel":channelValue
+            "type":value
         }
-        console.log("文本内容为：" + title + "," + content)
+
+        //动态添加对象属性
+        var hadChooseList = document.getElementsByClassName("hadChooseItem")
+        for (var i=0;i<hadChooseList.length;i++){
+            var desc = hadChooseList[i].getAttribute("data-desc")
+            console.log(desc)
+            message[desc.split(":")[0]] = desc.split(":")[1]
+        }
+
+
         $.ajax({
-            //url:'http://localhost:8080/send',//地址
             url: '/sendByCondition',//地址
             dataType: 'json',//数据类型
             type: 'POST',//类型
@@ -581,8 +725,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             data: JSON.stringify(message),
             //请求成功
             success: function (data, status) {
-                //alert(data);
-                //alert(status);
                 console.log(data + "," + status)
             },
             //失败/超时
@@ -593,7 +735,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         alert('重新请求');
                     }, 2000);
                 }
-                //alert(errorThrown);
             }
         })
     }
@@ -608,7 +749,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
             //socket = new WebSocket("ws://localhost:9094/starManager/websocket/张三")
-            socket = new WebSocket("ws://localhost:8080/admin");
+            socket = new WebSocket("ws://127.0.0.1:8080/admin");
             //打开事件
             socket.onopen = function () {
                 console.log("Socket 已打开");
@@ -631,6 +772,113 @@ scratch. This page gets rid of all links and provides the needed markup only.
             window.onunload = function (ev) {
                 socket.close()
             }
+        }
+    }
+
+    /**
+     *点击赛选条件歘的动作
+     */
+    function clickChoose(obj){
+        if (obj.innerHTML == "版本"){
+            document.getElementById("versionChoose").style.display = "block"
+        } else if (obj.innerHTML == "国家地区"){
+            document.getElementById("positionChoose").style.display = "block"
+        } else if (obj.innerHTML == "语言"){
+            document.getElementById("languageChoose").style.display = "block"
+        }else if (obj.innerHTML == "VIP"){
+            document.getElementById("vipChoose").style.display = "block"
+        }else if (obj.innerHTML == "年龄"){
+            document.getElementById("ageChoose").style.display = "block"
+        }else if (obj.innerHTML == "渠道"){
+            document.getElementById("channelChoose").style.display = "block"
+        }
+        document.getElementById("chooseOption").style.display = "none"
+        event.stopPropagation()
+
+    }
+
+
+    /**
+     *点击添加按钮是出发的动作
+     */
+    function addCondication(){
+        document.getElementById("coverOne").hidden = false
+        document.getElementById("chooseOption").style.display='block'
+    }
+
+
+
+    /**
+     *确认赛选条件
+     */
+    function confirmChoose(obj) {
+        document.getElementById("coverOne").hidden = true
+        obj.parentNode.style.display = "none"
+        document.getElementById("chooseOption").style.display = "block"
+        var parent = obj.parentNode
+        if (parent.getAttribute("data-info") == "年龄"){
+            var englishName = parent.getAttribute("data-name");
+            var inputList = parent.getElementsByTagName("input");
+            var minAge = inputList[0].value
+            var maxAge = inputList[1].value
+            var ageValue = "年龄："+minAge+"-"+maxAge
+            var age = minAge+":"+maxAge
+            var html = document.getElementById("selectGroup").innerHTML
+            $("#selectGroup").html("")
+            $("#selectGroup").append("<span class=\"hadChooseItem col-sm-2 chooseBtnGroup\" onclick=\"clickChoose(this)\" data-desc=\""+englishName+":"+age+"\">"+ageValue+"</span>\n"+html)
+        } else {
+            var chooseList = parent.getElementsByTagName("select")[0]
+            var channelIndex = chooseList.selectedIndex
+            var channelValue = chooseList.options[channelIndex].value
+            var datasetInfo = chooseList.getAttribute("data-info")
+            var englishName = chooseList.getAttribute("data-name");
+            var chooseCnValue = datasetInfo+"："+chooseList.options[channelIndex].innerText
+            var html = document.getElementById("selectGroup").innerHTML
+            $("#selectGroup").html("")
+            $("#selectGroup").append("<span class=\"hadChooseItem col-sm-2 chooseBtnGroup\" onclick=\"clickChoose(this)\" data-desc=\""+englishName+":"+channelValue+"\">"+chooseCnValue+"</span>\n"+html)
+        }
+        event.stopPropagation()
+
+    }
+
+    function hideCover(obj) {
+        obj.hidden = true
+        var chooseGroup = document.getElementsByClassName("chooseOption")
+        for (var i=0;i<chooseGroup.length;i++){
+            chooseGroup[i].style.display = "none"
+        }
+
+    }
+
+
+    /**
+     * 监听年龄输入，输入规则必须是区间在0-100之间的整数
+     * @param obj
+     */
+    function changeAgeValue(obj) {
+        if (obj.value == ""){
+            var temp = obj.parentNode
+            var parent = temp.parentNode
+            var btn = parent.getElementsByTagName("button")[0]
+            btn.disabled = true
+            return
+        }
+        if (obj.value < 0 || obj.value > 100){
+            var temp = obj.parentNode
+            var parent = temp.parentNode
+            var btn = parent.getElementsByTagName("button")[0]
+            btn.disabled = true
+            return
+        }
+        if (isNaN(obj.value) || obj.value.indexOf("+") != -1 || obj.value.indexOf("-") != -1 || obj.value.indexOf(".") != -1){
+            var temp = obj.parentNode
+            var parent = temp.parentNode
+            var btn = parent.getElementsByTagName("button")[0]
+            btn.disabled = true
+        }else {
+            var parent = obj.parentNode.parentNode;
+            var btn = parent.getElementsByTagName("button")[0]
+            btn.disabled = false
         }
     }
 </script>

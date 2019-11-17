@@ -11,6 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class PushMainEnterController {
 
 
+    /**
+     * 群发消息
+     * @param messageBean
+     * @return
+     */
     @ResponseBody()
     @RequestMapping(value = "/sendAll",method = RequestMethod.POST  , produces = "application/json;charset=UTF-8")
     public String sendAll(@RequestBody MessageBean messageBean){
@@ -25,6 +30,11 @@ public class PushMainEnterController {
     }
 
 
+    /**
+     * 发送给单个用户
+     * @param messageBean
+     * @return
+     */
     @ResponseBody()
     @RequestMapping(value = "/sendSingle",method = RequestMethod.POST  , produces = "application/json;charset=UTF-8")
     public String sendSingle(@RequestBody MessageBean messageBean){
@@ -37,6 +47,13 @@ public class PushMainEnterController {
         }
         return "{}";
     }
+
+    /**
+     *
+     * 通过渠道发送
+     * @param messageBean
+     * @return
+     */
 
     @ResponseBody()
     @RequestMapping(value = "/sendByChannel",method = RequestMethod.POST  , produces = "application/json;charset=UTF-8")
@@ -51,10 +68,17 @@ public class PushMainEnterController {
         return "{}";
     }
 
+    /**
+     * 通过组合条件发送
+     * @param messageBean
+     * @return
+     */
+
     @ResponseBody()
     @RequestMapping(value = "/sendByCondition",method = RequestMethod.POST  , produces = "application/json;charset=UTF-8")
     public String sendByCondition(@RequestBody MessageBean messageBean){
         Gson gson = new Gson();
+        System.out.println(gson.toJson(messageBean));
         if (messageBean != null){
             String backInfo = gson.toJson(messageBean);
             WebSocketUtils.sendMessageToUserForCondition(backInfo);
@@ -65,7 +89,11 @@ public class PushMainEnterController {
     }
 
 
-
+    /**
+     * 连接是默认跳转到starter.html这个网页下，这个网页就是管理后台的主界面
+     * @param mv
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value="/")
     public ModelAndView index(ModelAndView mv){

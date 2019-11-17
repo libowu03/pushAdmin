@@ -1,7 +1,7 @@
 package com.push.push.config;
 
-import com.push.push.webSocket.AdminConnectionHandler;
-import com.push.push.webSocket.UserConnectionHandler;
+import com.push.push.webSocket.AdminHandler;
+import com.push.push.webSocket.UserHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
@@ -21,10 +21,13 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new UserConnectionHandler(),"/user") // 普通用户websocket的连接路径
+        // 在这里注册一下user，用于拦截普通用户的连接
+        registry.addHandler(new UserHandler(),"/user")
                 .addInterceptors(new HttpSessionHandshakeInterceptor())
                 .setAllowedOrigins("*");
-        registry.addHandler(new AdminConnectionHandler(),"/admin") // 管理员websocket的连接路径
+
+        //这里注册一下admin，用于拦截管理员的连接，其实管理员在此项目中中需要获取在线的普通用户数量而已
+        registry.addHandler(new AdminHandler(),"/admin") // 管理员websocket的连接路径
                 .addInterceptors(new HttpSessionHandshakeInterceptor())
                 .setAllowedOrigins("*");
     }

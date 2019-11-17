@@ -39,7 +39,8 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+            <!-- 这个需要为 true 热部署才有效 -->
+            <optional>true</optional>
         </dependency>
 
         <!-- servlet依赖. -->
@@ -48,28 +49,32 @@
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
 
-        <!-- tomcat的支持.-->
+        <!-- 我们需要toncat，这是打开对tomcat的支持.-->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
 
+        <!-- 引入websocket-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
+        <!-- 魔板，前端页面时需要此依赖，不过不用也可以使用前端界面，不过麻烦些，引入这个库后，前端界面放到resource里的templates文件夹下，静态内容放到resource里的static文件夹下，比如要引入的css或js这些-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <!-- gson比较好用，json处理时方便些，也引入了库-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -79,6 +84,7 @@
 
     <build>
         <plugins>
+            <!-- 使用mvn命令打包成jar包时需要用到-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

@@ -5,7 +5,7 @@ import com.push.push.utils.WebSocketUtils;
 import org.springframework.web.socket.*;
 
 
-public class UserConnectionHandler implements WebSocketHandler {
+public class UserHandler implements WebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -24,6 +24,7 @@ public class UserConnectionHandler implements WebSocketHandler {
     @Override
     public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
         System.out.println("用户连接失败");
+        WebSocketUtils.removeUser(session);
     }
 
     @Override
