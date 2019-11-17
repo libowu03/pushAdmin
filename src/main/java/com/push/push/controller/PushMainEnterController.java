@@ -2,6 +2,7 @@ package com.push.push.controller;
 
 import com.google.gson.Gson;
 import com.push.push.bean.MessageBean;
+import com.push.push.bean.SendMessage;
 import com.push.push.utils.WebSocketUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -78,14 +79,19 @@ public class PushMainEnterController {
     @RequestMapping(value = "/sendByCondition",method = RequestMethod.POST  , produces = "application/json;charset=UTF-8")
     public String sendByCondition(@RequestBody MessageBean messageBean){
         Gson gson = new Gson();
-        System.out.println(gson.toJson(messageBean));
+        String msg;
+        String status;
         if (messageBean != null){
             String backInfo = gson.toJson(messageBean);
-            WebSocketUtils.sendMessageToUserForCondition(backInfo);
+            msg = WebSocketUtils.sendMessageToUserForCondition(backInfo);
+            status = "ok";
         }else {
             WebSocketUtils.sendMessageToAdmin("发送失败");
+            msg ="false";
+            status = "bad";
         }
-        return "{}";
+        SendMessage sendMessage = new SendMessage(status,msg);
+        return gson.toJson(sendMessage);
     }
 
 

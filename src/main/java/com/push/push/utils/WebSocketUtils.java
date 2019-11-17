@@ -149,26 +149,31 @@ public class WebSocketUtils {
      * 发送给某个渠道
      */
 
-    public static void sendMessageToUserForChannel(String msg){
-        Gson gson = new Gson();
-        MessageBean messageBean = gson.fromJson(msg,MessageBean.class);
-        usersSessionSet.forEach(webSocketSession -> {
-            String[] path = webSocketSession.getUri().getQuery().split("&");
-            HashMap<String,String> map = new HashMap<>();
-            for (int i=0;i<path.length;i++){
-                String[] para= path[i].split("=");
-                map.put(para[0],para[1]);
-            }
-            if (Integer.valueOf(map.get("channel")) == messageBean.getChannel()){
-                try {
-                    webSocketSession.sendMessage(new TextMessage(msg));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    System.out.println("发送消息给用户失败："+e.getLocalizedMessage());
+    public static String sendMessageToUserForChannel(String msg){
+        try{
+            Gson gson = new Gson();
+            MessageBean messageBean = gson.fromJson(msg,MessageBean.class);
+            usersSessionSet.forEach(webSocketSession -> {
+                String[] path = webSocketSession.getUri().getQuery().split("&");
+                HashMap<String,String> map = new HashMap<>();
+                for (int i=0;i<path.length;i++){
+                    String[] para= path[i].split("=");
+                    map.put(para[0],para[1]);
                 }
-            }
+                if (Integer.valueOf(map.get("channel")) == messageBean.getChannel()){
+                    try {
+                        webSocketSession.sendMessage(new TextMessage(msg));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        System.out.println("发送消息给用户失败："+e.getLocalizedMessage());
+                    }
+                }
 
-        });
+            });
+            return "success";
+        }catch (Exception e){
+            return "false";
+        }
     }
 
 
@@ -176,88 +181,78 @@ public class WebSocketUtils {
      * 通过条件发送信息
      */
 
-    public static void sendMessageToUserForCondition(String msg){
-        Gson gson = new Gson();
-        MessageBean messageBean = gson.fromJson(msg,MessageBean.class);
-        int channel = messageBean.getChannel();
-        String age = messageBean.getAge();
-        String version = messageBean.getVersion();
-        String area = messageBean.getArea();
-        String language = messageBean.getLanguage();
-        String vip = messageBean.getVip();
-        int minAge = -1;
-        int maxAge = -1;
-        if (age != null){
-            minAge = Math.min(Integer.parseInt(age.split("-")[0]),Integer.parseInt(age.split("-")[1]));
-            maxAge = Math.max(Integer.parseInt(age.split("-")[0]),Integer.parseInt(age.split("-")[1]));
-        }
+    public static String sendMessageToUserForCondition(String msg){
+        try{
+            Gson gson = new Gson();
+            MessageBean messageBean = gson.fromJson(msg,MessageBean.class);
+            int channel = messageBean.getChannel();
+            String age = messageBean.getAge();
+            String version = messageBean.getVersion();
+            String area = messageBean.getArea();
+            String language = messageBean.getLanguage();
+            String vip = messageBean.getVip();
+            int minAge = -1;
+            int maxAge = -1;
+            if (age != null){
+                minAge = Math.min(Integer.parseInt(age.split("-")[0]),Integer.parseInt(age.split("-")[1]));
+                maxAge = Math.max(Integer.parseInt(age.split("-")[0]),Integer.parseInt(age.split("-")[1]));
+            }
 
 
-        Iterator<WebSocketSession> iterator = usersSessionSet.iterator();
-        while (iterator.hasNext()){
-            WebSocketSession session = iterator.next();
-            String[] path = session.getUri().getQuery().split("&");
-            HashMap<String,String> map = new HashMap<>();
-            for (int i=0;i<path.length;i++){
-                String[] para= path[i].split("=");
-                map.put(para[0],para[1]);
-            }
-            int userAge = map.get("age")==null?-1:Integer.valueOf(map.get("age"));
-            if (version == null){
-                version = map.get("version");
-            }
-            if (area == null){
-                area = map.get("area");
-            }
-            if (language == null){
-                language = map.get("language");
-            }
-            if (vip == null){
-                vip = map.get("vip");
-            }
-            if (age == null){
-                age = map.get("age");
-                minAge = Integer.valueOf(age);
-                maxAge = Integer.valueOf(age);
-            }
-            System.out.println(version.equals(map.get("version"))+","+
-                    String.valueOf(channel).equals(map.get("channel")) +","+
-                    area.equals(map.get("area")) +","+
-                    language.equals(map.get("language")) +","+
-                    vip.equals(map.get("vip")) +","+
-                    (minAge<=Integer.valueOf(map.get("age"))) +","+
-                    (maxAge>=Integer.valueOf(map.get("age"))    ));
-
-            if (version.equals(map.get("version")) &&
-                    String.valueOf(channel).equals(map.get("channel")) &&
-                    area.equals(map.get("area")) &&
-                    language.equals(map.get("language")) &&
-                    vip.equals(map.get("vip")) &&
-                    minAge<=Integer.valueOf(map.get("age")) &&
-                    maxAge>=Integer.valueOf(map.get("age"))){
-                try {
-                    session.sendMessage(new TextMessage(msg));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    System.out.println("发送消息给用户失败："+e.getLocalizedMessage());
+            Iterator<WebSocketSession> iterator = usersSessionSet.iterator();
+            while (iterator.hasNext()){
+                WebSocketSession session = iterator.next();
+                String[] path = session.getUri().getQuery().split("&");
+                HashMap<String,String> map = new HashMap<>();
+                for (int i=0;i<path.length;i++){
+                    String[] para= path[i].split("=");
+                    map.put(para[0],para[1]);
                 }
-            }
-            map.clear();
-
-        }
-        usersSessionSet.forEach(webSocketSession -> {
-
-
-
-          /*  if (Integer.valueOf(map.get("channel")) == messageBean.getChannel() && Integer.valueOf(map.get("age"))>messageBean.getMinYear() && Integer.valueOf(map.get("age"))<messageBean.getMaxYear()){
-                try {
-                    webSocketSession.sendMessage(new TextMessage(msg));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    System.out.println("发送消息给用户失败："+e.getLocalizedMessage());
+                int userAge = map.get("age")==null?-1:Integer.valueOf(map.get("age"));
+                if (version == null){
+                    version = map.get("version");
                 }
-            }*/
+                if (area == null){
+                    area = map.get("area");
+                }
+                if (language == null){
+                    language = map.get("language");
+                }
+                if (vip == null){
+                    vip = map.get("vip");
+                }
+                if (age == null){
+                    age = map.get("age");
+                    minAge = Integer.valueOf(age);
+                    maxAge = Integer.valueOf(age);
+                }
+                System.out.println(version.equals(map.get("version"))+","+
+                        String.valueOf(channel).equals(map.get("channel")) +","+
+                        area.equals(map.get("area")) +","+
+                        language.equals(map.get("language")) +","+
+                        vip.equals(map.get("vip")) +","+
+                        (minAge<=Integer.valueOf(map.get("age"))) +","+
+                        (maxAge>=Integer.valueOf(map.get("age"))    ));
 
-        });
+                if (version.equals(map.get("version")) &&
+                        String.valueOf(channel).equals(map.get("channel")) &&
+                        area.equals(map.get("area")) &&
+                        language.equals(map.get("language")) &&
+                        vip.equals(map.get("vip")) &&
+                        minAge<=Integer.valueOf(map.get("age")) &&
+                        maxAge>=Integer.valueOf(map.get("age"))){
+                    try {
+                        session.sendMessage(new TextMessage(msg));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        System.out.println("发送消息给用户失败："+e.getLocalizedMessage());
+                    }
+                }
+                map.clear();
+            }
+            return "success";
+        }catch (Exception e){
+            return "false";
+        }
     }
 }

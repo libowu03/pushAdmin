@@ -415,7 +415,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <span class="addBtn col-sm-2" onclick="addCondication()">添加</span>
                                                     </div>
 
-                                                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary4 btn-lg col-lg-3" onclick="sendMessageFour()">开始推送</button>
+                                                    <button type="button" style="margin: 0 auto;" class="btn btn-block btn-primary btn-lg col-lg-3" onclick="sendMessageFour()">开始推送</button>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -725,7 +726,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             data: JSON.stringify(message),
             //请求成功
             success: function (data, status) {
-                console.log(data + "," + status)
+                if (data.status == "ok"){
+                    alert("推送发送成功")
+                }else {
+                    alert("推送发送失败")
+                }
             },
             //失败/超时
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -741,6 +746,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     function local() {
+        //拦截事件，避免点击穿透
+        initData()
+
         var socket;
         if (typeof (WebSocket) == "undefined") {
             console.log("您的浏览器不支持WebSocket");
@@ -779,6 +787,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
      *点击赛选条件歘的动作
      */
     function clickChoose(obj){
+        event.stopPropagation()
         if (obj.innerHTML == "版本"){
             document.getElementById("versionChoose").style.display = "block"
         } else if (obj.innerHTML == "国家地区"){
@@ -794,6 +803,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
         document.getElementById("chooseOption").style.display = "none"
         event.stopPropagation()
+
+    }
+
+    /**
+     * 取消select和option的事件传递，避免点击穿透
+     */
+    function initData() {
+        var selectList = document.getElementsByTagName("select");
+        for (var i=0;i<selectList.length;i++){
+            selectList[i].onclick = function () {
+                event.stopPropagation()
+            }
+        }
+
+        var selectList = document.getElementsByTagName("option");
+        for (var i=0;i<selectList.length;i++){
+            selectList[i].onclick = function () {
+                event.stopPropagation()
+            }
+        }
 
     }
 
